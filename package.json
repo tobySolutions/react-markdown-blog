@@ -1,0 +1,43 @@
+{
+    "name": "static-blog",
+    "version": "0.1.1",
+    "description": "A simple react static blog builder.",
+    "author": "codemzy",
+    "license": "MIT",
+    "scripts": {
+        "dev": "NODE_ENV=development node server.js",
+        "dev-build": "FULL=true PREVIEW=true npm run build-static && npm run dev-css && npm run build-js",
+        "dev-css": "postcss css/*.css --dir dist/css --ext .min.css",
+        "dev-static": "PREVIEW=true node build/build.js",
+        "build": "FULL=true npm run build-static && npm run build-css && npm run build-js",
+        "build-css": "postcss css/*.css --dir dist/css --ext .min.css --env production",
+        "build-js": "uglifyjs js/index.js --compress --mangle --comments '/^!/' --output dist/js/index.min.js && uglifyjs -mc -o dist/js/darkmode.min.js js/darkmode.js",
+        "build-static": "node build/build.js"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.13",
+        "@babel/preset-env": "^7.12.13",
+        "@babel/preset-react": "^7.12.13",
+        "@babel/register": "^7.13.8",
+        "@tailwindcss/typography": "^0.4.1",
+        "autoprefixer": "^10.2.4",
+        "babel-loader": "^8.2.2",
+        "cssnano": "^5.0.6",
+        "date-fns": "^2.25.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "gray-matter": "^4.0.3",
+        "html-minifier": "^4.0.0",
+        "marked": "^3.0.4",
+        "postcss": "^8.2.6",
+        "postcss-cli": "^8.3.1",
+        "postcss-import": "^14.0.0",
+        "prismjs": "^1.25.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-router-dom": "^5.2.0",
+        "tailwindcss": "^2.0.2",
+        "uglify-js": "^3.13.5",
+        "validator": "^13.5.2"
+    }
+}

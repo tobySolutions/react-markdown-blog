@@ -1,0 +1,32 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+
+    /* resposive videos */
+    .video-container {
+        @apply relative overflow-hidden;
+        padding-bottom: 56.25%;
+    }
+    .video-container>iframe {
+        @apply absolute inset-0 w-full h-full;
+    }
+
+    /* show correct dark mode icon */
+    html.dark #button-dark-mode #light-mode-icon {
+        @apply hidden;
+    }
+    html:not(.dark) #button-dark-mode #dark-mode-icon {
+        @apply hidden;
+    }
+
+    /* buttons */
+    .btn {
+        @apply inline-block text-lg text-center font-semibold px-4 py-2 whitespace-nowrap focus:outline-none focus:ring;
+    }
+
+    .btn-primary {
+        @apply bg-yellow-300 ring-yellow-400 hover:bg-yellow-400;
+    }
+}
